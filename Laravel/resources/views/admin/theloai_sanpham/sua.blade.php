@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Slide
-                            <small>Thêm</small>
+                        <h1 class="page-header">Thể Loại Sản Phẩm
+                            <small>Sửa</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -20,21 +20,28 @@
                         @endif
 
                         @if(Session::has('thongbao'))
-                            <div class="alert alert-success">
+                        <div class="alert alert-success">
                             {{session('thongbao')}}   
                         </div>
                         @endif
-                        <form action="admin/theloaisanpham/them" method="POST">
+                        <form action="admin/theloaisanpham/sua/{{$loaisanpham->id}}" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
-                                <label>Link</label>
-                                <input class="form-control" name="linksanpham" placeholder="Nhập link sản phẩm" />
+                                <label>Tên loại sản phẩm</label>
+                                <input class="form-control" name="tenloaisanpham" value="{{$loaisanpham->name}}" />
                             </div>
                             <div class="form-group">
-                                <label>Hình ảnh</label>
+                                <label>Mô tả</label>
+                                <textarea id='demo' class="form-control ckeditor rows="3" name="mota">{{$loaisanpham->description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                <img src="source/image/product/{{$loaisanpham->image}}" alt="" height="300px">
+                                </p>
+                                <label>Hình ảnh minh họa loại sản phẩm</label>
                                 <input type="file" name="hinh"/>
                             </div>
-                            <button type="submit" class="btn btn-default">Thêm Slide</button>
+                            <button type="submit" class="btn btn-default">Sửa </button>
                         <form>
                     </div>
                 </div>

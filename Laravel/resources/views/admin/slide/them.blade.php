@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Thể Loại Sản Phẩm
+                        <h1 class="page-header">Slide
                             <small>Thêm</small>
                         </h1>
                     </div>
@@ -20,28 +20,21 @@
                         @endif
 
                         @if(Session::has('thongbao'))
-                        <div class="alert alert-success">
+                            <div class="alert alert-success">
                             {{session('thongbao')}}   
                         </div>
                         @endif
-                        <form action="admin/theloaisanpham/sua/{{$loaisanpham->id}}" method="POST">
+                        <form action="admin/theloaisanpham/them" method="POST"  enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
-                                <label>Tên loại sản phẩm</label>
-                                <input class="form-control" name="tenloaisanpham" value="{{$loaisanpham->name}}" />
+                                <label>Link</label>
+                                <input class="form-control" name="linksanpham" placeholder="Nhập link sản phẩm" />
                             </div>
                             <div class="form-group">
-                                <label>Mô tả</label>
-                                <textarea id='demo' class="form-control ckeditor rows="3" name="mota">{{$loaisanpham->description}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <p>
-                                <img src="source/image/product/{{$loaisanpham->image}}" alt="" height="300px">
-                                </p>
-                                <label>Hình ảnh minh họa loại sản phẩm</label>
+                                <label>Hình ảnh</label>
                                 <input type="file" name="hinh"/>
                             </div>
-                            <button type="submit" class="btn btn-default">Sửa Thể Loại Sản Phẩm</button>
+                            <button type="submit" class="btn btn-default">Thêm Slide</button>
                         <form>
                     </div>
                 </div>

@@ -24,7 +24,7 @@
                             {{session('thongbao')}}   
                         </div>
                         @endif
-                        <form action="admin/theloaisanpham/them" method="POST">
+                        <form action="admin/theloaisanpham/them" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Tên Thể Loại sản Phẩm</label>
@@ -38,7 +38,7 @@
                                 <label>Hình ảnh</label>
                                 <input type="file" name="hinh"/>
                             </div>
-                            <button type="submit" class="btn btn-default">Thêm Slide</button>
+                            <button type="submit" class="btn btn-default">Thêm</button>
                         <form>
                     </div>
                 </div>

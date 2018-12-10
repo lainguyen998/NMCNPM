@@ -43,7 +43,7 @@ class TheloaisanphamController extends Controller
                 $tenHinh = str_random(4)."_".$name;
             }
             $file->move("source/image/product",$tenHinh);
-            $ls->image = $req->hinh;
+            $ls->image = $tenHinh;
         }
 
         else
@@ -78,10 +78,6 @@ class TheloaisanphamController extends Controller
         {
             $file = $req->file('hinh');
             $duoi = $file->getClientOriginalExtension();
-            if($duoi != 'jpg' && $duoi != 'png' && $duoi != 'pneg')
-            {
-                return redirect('admin/sanpham/them')->with('thongbao','Không đúng định dạng file ảnh');
-            }
             $name = $file->getClientOriginalName();
             $tenHinh = str_random(7)."_".$name;
             while(file_exists("source/image/product/".$tenHinh))
@@ -89,16 +85,16 @@ class TheloaisanphamController extends Controller
                 $tenHinh = str_random(4)."_".$name;
             }
             $file->move("source/image/product",$tenHinh);
-            $ls->image = $req->hinh;
+            $ls->image = $tenHinh;
         }
 
         else
         {
-            $ls->hinh = "";
+            $ls->image = "";
         }
 
         $ls->save();
-        return view('admin/theloaisanpham/sua'.$id)->with('thongbao','Sửa thành công');
+        return redirect('admin/theloaisanpham/sua/'.$id)->with('thongbao','Sửa thành công');
     }
 
     public function getXoa($id){
